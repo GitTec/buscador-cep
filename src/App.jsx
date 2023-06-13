@@ -1,13 +1,26 @@
 import { useState } from "react"
 import { FiSearch } from 'react-icons/fi';
 import "./styles.css";
+import api from "./services/api"
 
 function App() {
 
   const [input, setInput] = useState('')
+  const [cep, setCep] = useState({})
 
-  function handleSearch() {
-    alert("VALOR DO INPUT " + input)
+  async function handleSearch() {
+    if (input === "") {
+      alert("Informe um CEP!")
+      return;
+    }
+    try {
+      const response = await api.get(`${input}/json`)
+      setCep(response.data)
+      setInput("");
+    } catch {
+      alert("ops erro ao buscar aqui")
+      setInput("")
+    }
   }
   return (
     <div className="container">
@@ -28,14 +41,17 @@ function App() {
         </button>
       </div>
 
-      <main className="main">
-        <h2>CEP: 63360000</h2>
+      {Object.keys(cep).length > 0 && (
 
-        <span>Rua dos alfeneiros</span>
-        <span>Complemento: harry potter</span>
-        <span>rua dos bruxos</span>
-        <span>Sao Paulo - SP</span>
-      </main>
+        <main className="main">
+          <h2>CEP: {cep.cep}</h2>
+
+          <span>{cep.logradouro}</span>
+          <span>Complemento: {cep.complemento}</span>
+          <span>{cep.bairro}</span>
+          <span>{cep.localidade} - {cep.uf}</span>
+        </main>
+      )}
     </div>
   );
 }

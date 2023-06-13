@@ -4,12 +4,25 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(#121212, #212b46);
+    /* background: linear-gradient(#121212, #212b46); */
+    background-image: url("./assets/mapa.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* width: "100%"; */
+    /* position: relative; */
 }
+
+/* .container::after {
+    content: "";
+    position: absolute;
+    background:
+        linear-gradient(90deg, transparent 30%, background-color("black"));
+} */
 
 .title {
     font-size: 85px;
-    color: #fff;
+    /* color: #fff; */
+    color: rgb(145, 16, 16);
     animation: flipTitle 2s;
 }
 
@@ -24,7 +37,8 @@
 }
 
 .containerInput {
-    background-color: rgba(255, 255, 255, 0.2);
+    /* background-color: rgba(255, 255, 255, 0.2); */
+    background-color: rgba(207, 180, 180, 0.562);
     padding: 15px;
     margin: 34px 0;
     display: flex;
@@ -36,13 +50,17 @@
     background-color: transparent;
     border: 0;
     font-size: 20px;
-    color: #fff;
+    /* color: #fff; */
+    color: #5c3939;
+    font-weight: bold;
     outline: none;
     margin-right: 8px;
 }
 
 .containerInput input::placeholder {
-    color: #f1f1f1;
+    /* color: #f1f1f1; */
+    color: #5c3939;
+    font-weight: bold;
 }
 
 .buttonSeacrh {
